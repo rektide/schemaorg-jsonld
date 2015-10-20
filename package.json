@@ -6,8 +6,11 @@
 	"devDependencies": {
 		"fs-promise": "^0.3.1",
 		"gulp": "^3.9.0",
+		"gulp-util": "^3.0.7",
 		"isomorphic-fetch": "^2.1.1",
-		"jsonld-cli": "^0.4.2"
+		"jsdom": "^7.0.1",
+		"jsonld": "^0.4.2",
+		"jsonld-request": "0.1.0"
 	},
 	"scripts": {
 		"files": "find . -path ./node_modules -prune -o -path ./\\.git -prune -o -type f -print",
