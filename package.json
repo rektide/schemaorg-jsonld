@@ -2,7 +2,7 @@
 	"name": "schemaorg-jsonld",
 	"version": "1.0.0",
 	"description": "Schema.org as JSON-LD",
-	"main": "schemaorg.js",
+	"main": "schemaorg-jsonld.js",
 	"devDependencies": {
 		"fs-promise": "^0.3.1",
 		"gulp": "^3.9.0",
