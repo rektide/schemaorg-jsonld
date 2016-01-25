@@ -10,15 +10,16 @@ var
 
 function promiseCb(resolve, reject){
 	return function(err, data){
-		if( err) reject(err)
+		if( err) return reject(err)
 		resolve(data)
 	}
 }
 
 function sourceFile(){
 	var
-	  file= process.argv[ 2]|| process.env[ "SCHEMAORG_RDFA"]|| "schema.rdfa",
-	  branch= process.env[ "SCHEMAORG_BRANCH"]|| "master" // "sdo-phobos",
+	  file= process.argv[ 2]|| process.env.SCHEMAORG_RDFA|| "schema.rdfa",
+	  branch= process.env.SCHEMAORG_BRANCH|| "master",
+	  path= process.env.SCHEMAORG_PATH|| "/data/schema.rdfa"
 	  url= "https://raw.githubusercontent.com/schemaorg/schemaorg/"+ branch+ "/data/schema.rdfa"
 	gutil.log( "Using file '"+ file+ "' to source schema")
 	return fs
