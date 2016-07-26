@@ -1,25 +1,33 @@
 {
-	"name": "schemaorg-jsonld",
-	"version": "1.1.0",
-	"description": "Schema.org as JSON-LD",
-	"main": "schemaorg-jsonld.js",
-	"devDependencies": {
-		"fs-promise": "^0.3.1",
-		"gulp": "^3.9.0",
-		"gulp-util": "^3.0.7",
-		"isomorphic-fetch": "^2.1.1",
-		"jsdom": "^7.0.1",
-		"jsonld": "^0.4.2",
-		"jsonld-request": "0.1.0"
-	},
-	"scripts": {
-		"files": "find . -path ./node_modules -prune -o -path ./\\.git -prune -o -type f -print",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://archive.voodoowarez.com/schemaorg-jsonld"
-	},
-	"author": "rektide de la faye",
-	"license": "X"
+  "name": "schemaorg-jsonld",
+  "version": "1.1.0",
+  "description": "Schema.org as JSON-LD",
+  "main": "schemaorg-jsonld.js",
+  "devDependencies": {
+    "fs-promise": "^0.3.1",
+    "gulp": "^3.9.0",
+    "gulp-cli": "^1.2.1",
+    "gulp-util": "^3.0.7",
+    "isomorphic-fetch": "^2.1.1",
+    "jsdom": "^7.0.1",
+    "jsonld": "^0.4.2",
+    "jsonld-request": "0.1.0",
+    "rdf-parser-rdfa": "^0.3.0-rc1",
+    "rdf-serializer-jsonld": "^0.3.0"
+  },
+  "scripts": {
+    "files": "find . -path ./node_modules -prune -o -path ./\\.git -prune -o -type f -print",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "source": "gulp source",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://archive.voodoowarez.com/schemaorg-jsonld"
+  },
+  "author": "rektide de la faye",
+  "license": "X",
+  "dependencies": {
+    "jsonld-rdfa-parser": "^1.5.1"
+  }
 }

@@ -4,9 +4,18 @@ var
   gulp= require( "gulp"),
   gutil= require( "gulp-util"),
   jsonld= require( "jsonld"),
-  rdfa= require( "jsonld-request/lib/rdfa"),
+  //rdfa= require( "jsonld-request/lib/rdfa"),
   jsdom= require( "jsdom"),
   util= require( "util")
+
+
+
+jsonld.registerRDFParser("text/html", require("jsonld-rdfa-parser"))
+
+// wait what, no?
+//(function(){
+//	jsonld.registerRDFParser("text/html", require("jsonld-rdfa-parser"))
+//})()
 
 function promiseCb(resolve, reject){
 	return function(err, data){
@@ -51,6 +60,8 @@ function xmlParse( source){
 	})
 }
 
+
+
 function getDoc( win){
 	return win.document
 }
@@ -60,7 +71,9 @@ function extractJsonLd( doc){
 		gutil.log( "Extracting json-ld")
 		// extract JSON-LD from RDFa
 		// https://github.com/digitalbazaar/jsonld-request/commit/b75e066e9bd68988f544eba6a961cebd7301cac6#diff-96d9811cb2296e877edf463c6cfc57bdR118
+		gutil.log(doc)
 		rdfa.attach(doc);
+		gutil.log("NEXT!")
 		jsonld.fromRDF(doc.data, {format: 'rdfa-api'}, promiseCb( resolve, reject))
 	})
 }
@@ -74,8 +87,19 @@ function print( val){
 	gutil.log( val)
 }
 
+
+function rdfaToJsonLD( val){
+	return new Promise(function(res, rej){
+		jsonld.fromRDF( val, {format: 'text/html'}, function(err, data){
+			if(err) return rej(err)
+			res(data)
+		})
+	})
+}
+
 function run(){
-	return sourceFile().then( xmlParse).then( getDoc).then( extractJsonLd).then( saveJsonLd)
+	//return sourceFile().then( xmlParse).then( getDoc).then( extractJsonLd).then( saveJsonLd)
+	return sourceFile().then( xmlParse).then( getDoc).then( rdfaToJsonLD).then( saveJsonLd)
 }
 
 gulp.task( "source", sourceFile)
