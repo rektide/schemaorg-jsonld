@@ -1,6 +1,6 @@
 {
   "name": "schemaorg-jsonld",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Schema.org as JSON-LD",
   "main": "schemaorg-jsonld.js",
   "devDependencies": {
