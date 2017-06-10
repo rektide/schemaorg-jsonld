@@ -1,6 +1,6 @@
 var
   fetch= require( "isomorphic-fetch"),
-  fs= require( "fs-promise"),
+  fs= require( "mz/fs"),
   gulp= require( "gulp"),
   gutil= require( "gulp-util"),
   jsonld= require( "jsonld"),
